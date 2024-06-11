@@ -1,0 +1,52 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-down" refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="user-info">
+    <img src="https://images.vexels.com/media/users/3/147101/isolated/preview/b4a49d4b864c74bb73de63f080ad7930-bot-n-de-perfil-de-instagram.png" alt="Foto de perfil" class="logo">
+    <h1>Bienvenido {{name2}} </h1>
+    <br>
+    <h3>Entregas del día: {{clientes.length}}</h3>
+  </div>
+  <br>
+  <ion-list *ngIf="clientes.length > 0; else noClientes">
+
+    
+    <ion-item *ngFor="let cliente of clientes" color="light" class="lista-item">
+      <ion-avatar slot="start">
+        <img src="https://images.vexels.com/media/users/3/147101/isolated/preview/b4a49d4b864c74bb73de63f080ad7930-bot-n-de-perfil-de-instagram.png" class="logo-clientes">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{cliente.RazonSocial}}</h2>
+        <p>{{cliente.Domicilio}}</p>
+      </ion-label>
+      <ion-button slot="end" fill="clear" (click)="irAMapa(cliente)">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </ion-button>
+      
+    </ion-item>
+  </ion-list>
+  <ng-template #noClientes>
+    <div class="no-clientes-message">
+
+    <ion-item>
+
+      <p>No hay clientes por visitar hoy.</p>
+
+    </ion-item>
+    </div>
+  </ng-template>
+  <ion-button expand="block" (click)="irCliente(ruta)">
+   Agrega una ruta. 
+  </ion-button>
+  <ion-button expand="block" (click)="goToLogin()">
+    Cerrar sesión
+  </ion-button>
+</ion-content>
+
+

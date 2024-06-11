@@ -1,0 +1,55 @@
+/* mapa.page.scss o tu archivo de estilos correspondiente */
+
+ion-content {
+  background-color: #555454; /* Cambia este color al que desees */
+}
+
+.map-wrapper {
+  height: 30%;
+  border: 5px solid #ccc;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#mapdiv {
+  width: 100%;
+  height: 100%;
+}
+
+.map-title {
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+ion-input {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.line-divider {
+  border: none;
+  border-top: 1px solid #555454; /* Ajusta el color de la línea según tus necesidades */
+  margin: 5px 0; /* Ajusta el margen de la línea según tus necesidades */
+}
+
+.tabla-container {
+  margin-top: 10px; /* Ajusta según sea necesario */
+}
+
+.header-row, .venta-row, .total-row {
+  margin-bottom: 5px; /* Ajusta según sea necesario */
+  align-items: center;
+}
+
+.total-row ion-col {
+  font-weight: bold;
+}

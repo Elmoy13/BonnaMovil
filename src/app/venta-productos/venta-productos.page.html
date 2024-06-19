@@ -1,0 +1,36 @@
+<ion-content [fullscreen]="true" class="contenedor">
+  <ion-header class="cabecera">
+    <ion-grid>
+      <ion-back-button defaultHref="/lista" text="" icon="arrow-back-outline" class="back-button"></ion-back-button>
+      <ion-row class="title">
+        <ion-col>
+          <h3>Detalle de la Venta</h3>
+          <h1>{{ detalleVenta?.TotalImporte | number:'1.2-2' }}</h1>
+        </ion-col>
+      </ion-row>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/lista" text="Regresar" icon="arrow-back-outline" class="back-button"></ion-back-button>
+      </ion-buttons>
+    </ion-grid>
+  </ion-header>
+
+  <ion-grid class="lista">
+    <ion-row>
+      <ion-col>
+        <h3>Productos</h3>
+        <ion-list [inset]="true">
+          <ion-item *ngFor="let producto of productos">
+            <ion-thumbnail slot="start">
+              <img *ngIf="producto.ImagenURL" [src]="producto.ImagenURL" alt="{{ producto.Descripcion || producto.CodProd }}">
+            </ion-thumbnail>
+            <ion-label>
+              <h2>{{ producto.Descripcion || 'CodProd: ' + producto.CodProd }}</h2>
+              <p>Kgs: {{ producto.Kgs }}</p>
+              <p>Precio Unit: {{ producto.PrecioUnit | currency }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

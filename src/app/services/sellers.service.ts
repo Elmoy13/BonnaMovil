@@ -54,4 +54,12 @@ deleteClientesByRuta(ruta: string): Observable<any> {
 
   return this.http.post<any>(url, { Ruta: ruta });
 }
+getVentas(codAgen: string): Observable<any> {
+  const url = `${this.apiUrl}ventas/${codAgen}`;
+  return this.http.get<any>(url);
+}
+getDetalleVentas(noVenta: string): Observable<any> {
+  const url = `${this.apiUrl}venta/${noVenta}`;
+  return this.http.get<any>(url);
+}
 }

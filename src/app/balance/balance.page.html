@@ -1,0 +1,38 @@
+<ion-content [fullscreen]="true" class="contenedor">
+  
+  <ion-header class="cabecera">
+    
+    <ion-grid>
+      <ion-back-button defaultHref="/lista" text="" icon="arrow-back-outline" class="back-button"></ion-back-button>
+
+      <ion-row class="title">
+        <ion-col>
+          <h3>Balance total</h3>
+          <h1>$ {{ balanceTotal | number:'1.2-2' }}</h1>
+        </ion-col>
+      </ion-row>
+      <!-- Botón de regresar -->
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/lista" text="Regresar" icon="arrow-back-outline" class="back-button"></ion-back-button>
+      </ion-buttons>
+    </ion-grid>
+  </ion-header>
+
+  <ion-grid class="lista">
+    <ion-row>
+      <ion-col>
+        <h3>Ganancias del día <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="selectedDate" (ionChange)="onDateChange()"></ion-datetime></h3>
+        <ion-list [inset]="true">
+          <ion-item *ngFor="let venta of filteredVentas" [button]="true" [routerLink]="['/venta-productos', venta.NoVenta]">
+            <ion-icon color="success" slot="start" name="trending-up-outline" size="large"></ion-icon>
+            <ion-list>
+              <ion-label class="list-viaje">Total - {{ venta.TotalImporte }}</ion-label>
+              <ion-label class="list-metodo-pago">{{ venta.CodCte }}</ion-label>
+            </ion-list>
+            <ion-note slot="end" class="list-precio">+{{ venta.movimientos.length }}</ion-note>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

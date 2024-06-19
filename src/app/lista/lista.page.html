@@ -13,7 +13,11 @@
     <br>
     <h3>Entregas del día: {{clientes.length}}</h3>
   </div>
+  <div class="specific-container">
+    <ion-button expand="block" class="specific-red-button" (click)="goToBalance()">Ver mi meta</ion-button>
+  </div>
   <br>
+  
   <ion-list *ngIf="clientes.length > 0; else noClientes">
 
     
@@ -31,15 +35,62 @@
       
     </ion-item>
   </ion-list>
+
+
   <ng-template #noClientes>
     <div class="no-clientes-message">
 
+
+      
     <ion-item>
 
       <p>No hay clientes por visitar hoy.</p>
 
     </ion-item>
     </div>
+  </ng-template>
+  <div class="button-group centrado">
+    <div class="row">
+      <button *ngFor="let day of days.slice(0, 3)" 
+              [class.selected]="day === selectedDay" 
+              (click)="selectDay(day)" 
+              class="day-button">
+        {{ day }}
+      </button>
+    </div>
+    <div class="row">
+      <button *ngFor="let day of days.slice(3)" 
+              [class.selected]="day === selectedDay" 
+              (click)="selectDay(day)" 
+              class="day-button">
+        {{ day }}
+      </button>
+    </div>
+  </div>
+  
+
+  <div *ngIf="filteredClientes?.length > 0; else noClients" >
+    <div *ngFor="let cliente of filteredClientes" [ngClass]="getColorClass(cliente)" class="cliente-item" [ngStyle]="{
+      backgroundColor: cliente[selectedDay] === '1' ? 'yellow' :
+                     cliente[selectedDay] === '2' ? 'green' :
+                     cliente[selectedDay] === '3' ? 'red' : 'transparent'
+    }">
+      
+      <div class="info" >
+        <h2>{{cliente.RazonSocial}}</h2>
+        <p>{{cliente.Domicilio}}</p>
+      </div>
+      <div class="action">
+        <ion-button fill="clear" (click)="irAMapa(cliente)">
+          <ion-icon name="arrow-forward"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </div>
+  
+  
+  <ng-template #noClients>
+    <p>No hay clientes el {{ selectedDay }} para el estado seleccionado.</p>
   </ng-template>
   <ion-button expand="block" (click)="irCliente(ruta)">
    Agrega una ruta. 

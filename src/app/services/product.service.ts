@@ -17,4 +17,7 @@ export class ProductService {
   getProductByCode(code: string): Observable<any> {
     return this.http.get(this.URI + 'productos/matriz/' + code);
   }
+  getProductByCodeImg(code: string): Observable<any> {
+    return this.http.get(this.URI + 'productos/' + code);
+  }
 }

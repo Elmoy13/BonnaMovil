@@ -24,6 +24,91 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para resaltar la caja */
     margin: 25px; /* Ajusta el margen según sea necesario */
   }
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  
+  .day-button {
+    border: none;
+    border-radius: 15px;
+    background-color: #e47878;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    outline: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .specific-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .specific-red-button {
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    width: 70%;
+    --border-radius: 10px;
+    --background: red;
+    --background-activated: darkred;
+    --background-focused: darkred;
+    --background-hover: darkred;
+  }
+  .day-button:hover {
+    background-color: #ddd;
+  }
+  
+  .day-button.selected {
+    background-color: red;
+    color: white;
+  }
+  
+  
+  .assigned {
+    background-color: yellow;
+  }
+  
+  .visited {
+    background-color: green;
+  }
+  
+  .not-visited {
+    background-color: red;
+  }
+  
+  .cliente-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .avatar {
+    flex: 0 0 auto;
+  }
+  
+  .info {
+    flex: 1;
+    padding-left: 10px;
+  }
+  
+  .action {
+    flex: 0 0 auto;
+  }
+  
+  
   
   .user-info img {
     width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */

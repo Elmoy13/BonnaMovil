@@ -43,6 +43,16 @@ const routes: Routes = [
     path: 'add-client-route/:codAgen',
     loadChildren: () => import('./add-client-route/add-client-route.module').then( m => m.AddClientRoutePageModule)
   },
+  {
+    path: 'balance/:codAgen',
+    loadChildren: () => import('./balance/balance.module').then( m => m.BalancePageModule)
+  },
+  {
+    path: 'venta-productos/:NoVenta',
+    loadChildren: () => import('./venta-productos/venta-productos.module').then( m => m.VentaProductosPageModule)
+  },
+
+
 
   
 

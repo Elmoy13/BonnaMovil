@@ -1,0 +1,183 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">CHECK LIST</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">CHOFER</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">FECHA</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">UNIDAD</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">PLACAS</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">KM INICIAL</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">KM FINAL</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">COMBUSTIBLE FOTOGRAFIA</ion-label>
+      <input
+        type="file"
+        accept="image/*"
+        capture="camera"
+        style="display: none"
+        id="fileInput"
+      />
+      <label for="fileInput" class="file-input-label">
+        <ion-icon name="add-circle" style="font-size: 24px"></ion-icon>
+      </label>
+    </ion-item>
+  </ion-list>
+
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">NIVELES </ion-title>
+  </ion-toolbar>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">AC MOTOR</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">AC TRANSM</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">AC DIRECCION</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">POSICIONES </ion-title>
+  </ion-toolbar>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">POS 1</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">POS 2</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">POS 3</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">POS 4</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">REFACCION</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">ESPEJOS </ion-title>
+  </ion-toolbar>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">ESPEJO LAT IZQ</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">ESPEJO LAT DER</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">RETROVISOR</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">CONTROL DE TRANSPORTE </ion-title>
+  </ion-toolbar>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">PLACAS</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">TARJETA C</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">LICENCIA</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">HERRAMIENTAS PARA VEHICULOS </ion-title>
+  </ion-toolbar>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">LIMPIABRISAS</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">GATO</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">CLAXON</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">LIMPIEZA </ion-title>
+  </ion-toolbar>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">EXTERIORES</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">INTERIORES</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">TERMOKING</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label position="stacked" style="margin-left: 10px; margin-right: 10px;">COMBUSTIBLE</ion-label>
+    <ion-select>
+      <ion-select-option value="programación">LLENO</ion-select-option>
+      <ion-select-option value="diseño">VACIO</ion-select-option>
+      <!-- Agrega más opciones de categoría aquí -->
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="full" color="primary" style="margin: 10px"
+    >ENVIAR CHECK LIST</ion-button
+  >
+</ion-content>

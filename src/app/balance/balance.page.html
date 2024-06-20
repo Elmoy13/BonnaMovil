@@ -11,6 +11,16 @@
           <h1>$ {{ balanceTotal | number:'1.2-2' }}</h1>
         </ion-col>
       </ion-row>
+
+      <!-- Barra de progreso -->
+      <ion-row class="progress-bar">
+        <ion-col>
+          <div class="progress-container">
+            <div class="progress" [ngStyle]="{'width.%': progressPercentage, 'background-color': getProgressBarColor()}"></div>
+          </div>
+        </ion-col>
+      </ion-row>
+
       <!-- Botón de regresar -->
       <ion-buttons slot="start">
         <ion-back-button defaultHref="/lista" text="Regresar" icon="arrow-back-outline" class="back-button"></ion-back-button>

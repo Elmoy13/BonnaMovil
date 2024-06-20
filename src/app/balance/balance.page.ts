@@ -13,6 +13,8 @@ export class BalancePage implements OnInit {
   balanceTotal: number = 0;
   selectedDate: string = this.getTodayDate(); // Default to today
   filteredVentas: any[] = [];
+  meta: number = 14500; // Define your goal here
+  progressPercentage: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -58,9 +60,24 @@ export class BalancePage implements OnInit {
 
   calculateBalanceTotal() {
     this.balanceTotal = this.filteredVentas.reduce((total, venta) => total + parseFloat(venta.TotalImporte), 0);
+    this.updateProgressPercentage();
+  }
+
+  updateProgressPercentage() {
+    this.progressPercentage = (this.balanceTotal / this.meta) * 100;
   }
 
   onDateChange() {
     this.filterVentasByDate(this.selectedDate);
+  }
+
+  getProgressBarColor(): string {
+    if (this.progressPercentage >= 100) {
+      return 'green';
+    } else if (this.progressPercentage > 95) {
+      return 'yellow';
+    } else {
+      return 'red';
+    }
   }
 }

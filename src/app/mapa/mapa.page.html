@@ -1,52 +1,43 @@
-<ion-header >
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/lista"></ion-back-button>
     </ion-buttons>
 
-    <!-- Agrega el título de la página si es necesario -->
     <ion-title>Información del cliente</ion-title>
-
-    <!-- Agrega el botón de filtro en la esquina derecha -->
-    
   </ion-toolbar>
 </ion-header>
-<ion-content color="danger">
-  <!-- <div class="map-wrapper">
-    <div #mapdiv class="map-container">
-      
-    </div>
-  </div> -->
-  <div class="map-title">
-    
-    <hr class="line-divider">
-     <h3>Nombre: {{ cliente.RazonSocial }}</h3>
-    <h3>Dirección: {{ cliente.Estado }}   {{ cliente.Poblacion }} {{ cliente.Colonia }} <br> {{ cliente.Domicilio }}</h3>
-   
-  </div>
-  <ion-button (click)="mostrarRazonesNoEntrega()">Sin entrega</ion-button>
 
+<ion-content color="danger">
+  <div class="map-title">
+    <hr class="line-divider">
+    <h3>Nombre: {{ cliente.RazonSocial }}</h3>
+    <h3>Dirección: {{ cliente.Estado }} {{ cliente.Poblacion }} {{ cliente.Colonia }} <br> {{ cliente.Domicilio }}</h3>
+  </div>
+
+  <ion-button (click)="mostrarRazonesNoEntrega()">Sin entrega</ion-button>
   <br>
+
   <ion-item color="danger">
-    <ion-label position="floating" >Código</ion-label>
+    <ion-label position="floating">Código</ion-label>
     <ion-input 
       name="codigo" 
       [(ngModel)]="scannedData.Descripcion" 
       type="text" 
       required
       (ionInput)="onSearchChange($event)"
-      autocomplete="on"  
-      
-    ></ion-input>
+      autocomplete="on">
+    </ion-input>
   </ion-item>
+
   <ion-item color="danger">
     <ion-label position="floating">Kilogramos</ion-label>
     <ion-input
       name="kilogramos"
       [(ngModel)]="nuevosKilogramos"
       type="number"
-      required
-    ></ion-input>
+      required>
+    </ion-input>
   </ion-item>
 
   <ion-list *ngIf="filteredProducts.length > 0">
@@ -54,6 +45,7 @@
       {{ item.CodProd }} - {{ item.Descripcion }}
     </ion-item>
   </ion-list>
+
   <ion-button expand="full" color="danger" (click)="agregarVenta()">Agregar</ion-button>
 
   <div class="tabla-container">
@@ -67,7 +59,13 @@
     
     <ion-row *ngFor="let venta of ventas; let i = index" class="venta-row">
       <ion-col>{{ venta.id }}</ion-col>
-      <ion-col>{{ venta.kg }}</ion-col>
+      <ion-col>
+        <ion-input 
+          type="number"
+          [(ngModel)]="venta.kg"
+          (ionBlur)="actualizarPrecioTotal(venta, i)">
+        </ion-input>
+      </ion-col>
       <ion-col>{{ venta.precio }}</ion-col>
       <ion-col>{{ venta.precioTotal }}</ion-col>
       <ion-col>
@@ -81,5 +79,6 @@
       <ion-col>Total: {{ totalPrecioTotal }}</ion-col>
     </ion-row>
   </div>
+
   <ion-button expand="full" (click)="realizarVenta()">Realizar Venta</ion-button>
 </ion-content>

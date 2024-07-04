@@ -1,45 +1,30 @@
-<ion-header >
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/lista"></ion-back-button>
     </ion-buttons>
-
-    <!-- Agrega el título de la página si es necesario -->
     <ion-title>Mis clientes</ion-title>
-
-    <!-- Agrega el botón de filtro en la esquina derecha -->
-    
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content>
-  <ion-button expand="block" (click)="irACliente()">
-    Agrega un nuevo cliente 
-   </ion-button>
-  <br>
- 
-<br>
+  <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterClientsByName()"></ion-searchbar>
+  <ion-button expand="block" (click)="irACliente()">Agregar un nuevo cliente</ion-button>
   <ion-list>
-    <ion-item *ngFor="let client of clients" color="light" class="lista-item">
+    <ion-item *ngFor="let client of filteredClients" color="light" class="lista-item">
       <ion-avatar slot="start">
         <img src="https://images.vexels.com/media/users/3/147101/isolated/preview/b4a49d4b864c74bb73de63f080ad7930-bot-n-de-perfil-de-instagram.png" class="logo-clientes">
       </ion-avatar>
       <ion-label>
         <h2>{{client.RazonSocial}}</h2>
         <p>Dirección: {{ client.Domicilio }}, {{ client.NoExterior }}</p>
-  <p>Colonia: {{ client.Colonia }}, Población: {{ client.Poblacion }}, Estado: {{ client.Estado }}</p>
-  <p>Teléfono: {{ client.Telefono }}, Código Postal: {{ client.CodPostal }}</p>
+        <p>Colonia: {{ client.Colonia }}, Población: {{ client.Poblacion }}, Estado: {{ client.Estado }}</p>
+        <p>Teléfono: {{ client.Telefono }}, Código Postal: {{ client.CodPostal }}</p>
       </ion-label>
       <ion-button slot="end" fill="clear" (click)="irAMapa(client)">
         <ion-icon name="arrow-forward"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>
- 
-
   <ion-button (click)="onDeleteClientesByRuta()">Eliminar rutas de la semana anterior</ion-button>
-
 </ion-content>
-
-

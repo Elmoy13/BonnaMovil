@@ -10,19 +10,21 @@ import { SellerDetailModalComponent } from '../seller-detail-modal/seller-detail
   styleUrls: ['./route-assignment.page.scss'],
 })
 export class RouteAssignmentPage implements OnInit {
-  sellers: any[] = []; // arreglo que contendrá los vendedores
-  selectedSeller: any; // vendedor seleccionado
-  clients!: any[]; // arreglo que contendrá los clientes asociados al vendedor seleccionado
+  sellers: any[] = [];
+  selectedSeller: any;
+  clients!: any[];
   seller: any;
   private ruta: string;
   sellerDay: any;
   noClientsMessage: string = "No hay clientes para el día seleccionado.";
-  filteredClientes: any[] = [];
+  filteredClients: any[] = [];
   clientesDia!: any[];
-  clientsToShow: any[] = []; // Propiedad para almacenar los clientes que se mostrarán
-  filterState: 'asignado' | 'visitado' | 'noVisitado' = 'asignado'; // Estado actual del filtro
+  clientsToShow: any[] = [];
+  filterState: 'asignado' | 'visitado' | 'noVisitado' = 'asignado';
   selectedDay: string = "Lunes";
   private loading: HTMLIonLoadingElement;
+  searchTerm: string = '';
+
   constructor(
     private sellersService: SellersService,
     private route: ActivatedRoute,
@@ -34,48 +36,54 @@ export class RouteAssignmentPage implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      const codAgen = params['codAgen']; // Obtén el valor de codAgen de los parámetros de la ruta
+      const codAgen = params['codAgen'];
       this.ruta = params['codAgen'];
       this.loadClients(codAgen);
       this.loadClientsDay(codAgen);
-
     });
   }
 
   private loadClientsDay(codAgen: string) {
     this.sellersService.getallClientesInfoByDay(codAgen).subscribe(
       (data) => {
-        this.clientesDia = data.clientes; // Asigna los clientes asociados al vendedor seleccionado
-        console.log("Somos los clientes ", this.clientesDia)
-        this.filteredClientes = this.clientesDia.filter(cliente => cliente.Lunes !== '0');
+        this.clientesDia = data.clientes;
+        this.filteredClients = this.clientesDia.filter(cliente => cliente.Lunes !== '0');
       },
       (error) => {
         console.error('Error al obtener clientes', error);
       }
     );
   }
-  
+
   filterClients(day: string, status: string) {
     if (status === 'asignado' || status === 'visitado' || status === 'noVisitado') {
-      this.filterState = status as "asignado" | "visitado" | "noVisitado"; // Usa la aserción de tipo
+      this.filterState = status as "asignado" | "visitado" | "noVisitado";
     } else {
       console.error('Estado no válido:', status);
     }
     switch (status) {
       case 'asignado':
-        this.filteredClientes = this.clientesDia.filter(cliente => cliente[day] === '1');
+        this.filteredClients = this.clientesDia.filter(cliente => cliente[day] === '1');
         break;
       case 'visitado':
-        this.filteredClientes = this.clientesDia.filter(cliente => cliente[day] === '2');
+        this.filteredClients = this.clientesDia.filter(cliente => cliente[day] === '2');
         break;
       case 'noVisitado':
-        this.filteredClientes = this.clientesDia.filter(cliente => cliente[day] === '3');
+        this.filteredClients = this.clientesDia.filter(cliente => cliente[day] === '3');
         break;
       default:
-        this.filteredClientes = this.clientesDia;
+        this.filteredClients = this.clientesDia;
         break;
     }
   }
+
+  filterClientsByName() {
+    const term = this.searchTerm.toLowerCase();
+    this.filteredClients = this.clients.filter(client => 
+      client.RazonSocial.toLowerCase().includes(term)
+    );
+  }
+
   async openClientDetailsModal(client: any) {
     const modal = await this.modalController.create({
       component: SellerDetailModalComponent,
@@ -83,7 +91,6 @@ export class RouteAssignmentPage implements OnInit {
         client: client,
       },
     });
-
     await modal.present();
   }
 
@@ -94,15 +101,16 @@ export class RouteAssignmentPage implements OnInit {
   private loadClients(codAgen: string) {
     this.sellersService.getClientsBySeller(codAgen).subscribe(
       (data) => {
-        this.clients = data.clients; // Asigna los clientes asociados al vendedor seleccionado
+        this.clients = data.clients;
         this.seller = data.seller;
-        console.log(this.clients);
+        this.filteredClients = this.clients;
       },
       (error) => {
         console.error('Error al obtener clientes', error);
       }
     );
   }
+
   async onDeleteClientesByRuta() {
     const alert = await this.alertController.create({
       header: 'Confirmar Eliminación',
@@ -116,21 +124,20 @@ export class RouteAssignmentPage implements OnInit {
         {
           text: 'Eliminar',
           handler: async () => {
-            this.presentLoading(); // Mostrar el loader antes de la eliminación
+            this.presentLoading();
             try {
               await this.sellersService.deleteClientesByRuta(this.ruta).toPromise();
-              this.dismissLoading(); // Ocultar el loader después de la eliminación
+              this.dismissLoading();
               this.presentAlert('Clientes eliminados exitosamente');
               this.router.navigate(['/sellers']);
             } catch (error) {
-              this.dismissLoading(); // Ocultar el loader en caso de error
+              this.dismissLoading();
               this.presentAlert('Error al eliminar clientes');
             }
           },
         },
       ],
     });
-
     await alert.present();
   }
 
@@ -140,7 +147,6 @@ export class RouteAssignmentPage implements OnInit {
       message: message,
       buttons: ['OK'],
     });
-
     await alert.present();
   }
 
@@ -157,6 +163,7 @@ export class RouteAssignmentPage implements OnInit {
       await this.loading.dismiss();
     }
   }
+
   irACliente() {
     this.router.navigate(['/add-client-route', this.ruta]);
   }

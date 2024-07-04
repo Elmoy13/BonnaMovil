@@ -13,7 +13,7 @@ export class BalancePage implements OnInit {
   balanceTotal: number = 0;
   selectedDate: string = this.getTodayDate(); // Default to today
   filteredVentas: any[] = [];
-  meta: number = 14500; // Define your goal here
+  meta: number = 0; // Define your goal here
   progressPercentage: number = 0;
 
   constructor(
@@ -24,6 +24,8 @@ export class BalancePage implements OnInit {
   ngOnInit() {
     this.codAgen = this.route.snapshot.paramMap.get('codAgen');
     this.loadVentas(this.codAgen);
+    this.loadGoalDay(this.codAgen);
+
   }
 
   getTodayDate(): string {
@@ -35,7 +37,17 @@ export class BalancePage implements OnInit {
     });
     return today.split('/').reverse().join('-'); // Format as YYYY-MM-DD
   }
-
+  loadGoalDay(codAgen: string) {
+    this.sellersService.getGoalDay(codAgen).subscribe(
+      (data) => {
+        this.meta = data.goalDay;
+        this.updateProgressPercentage();
+      },
+      (error) => {
+        console.error('Error fetching goalDay', error);
+      }
+    );
+  }
   loadVentas(codAgen: string) {
     this.sellersService.getVentas(codAgen).subscribe(
       data => {

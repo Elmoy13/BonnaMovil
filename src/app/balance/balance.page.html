@@ -3,7 +3,7 @@
   <ion-header class="cabecera">
     
     <ion-grid>
-      <ion-back-button defaultHref="/lista" text="" icon="arrow-back-outline" class="back-button"></ion-back-button>
+      <ion-back-button text="" icon="arrow-back-outline" class="back-button"></ion-back-button>
 
       <ion-row class="title">
         <ion-col>
@@ -18,7 +18,14 @@
           <div class="progress-container">
             <div class="progress" [ngStyle]="{'width.%': progressPercentage, 'background-color': getProgressBarColor()}"></div>
           </div>
+
         </ion-col>
+      </ion-row>
+      <ion-row class="title">
+        <ion-col>
+          <h3>La meta del día es :$ {{ meta | number:'1.2-2' }}</h3>
+        </ion-col>
+
       </ion-row>
 
       <!-- Botón de regresar -->

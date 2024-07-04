@@ -4,7 +4,7 @@ export const environment = {
   API: 'http://201.159.34.30:9295/bonnacarne-api/public/api/',
   superAdminEmail: 'sistemas@bonnacarne.com',
   currency: '$',
-  firebase: {
+  firebaseConfig: {
     apiKey: "AIzaSyCkitavzHWJZAaNlvaz9ACFzU7WmmWkPwY",
     authDomain: "bonnacarne-88c7b.firebaseapp.com",
     databaseURL: "https://bonnacarne-88c7b-default-rtdb.firebaseio.com",

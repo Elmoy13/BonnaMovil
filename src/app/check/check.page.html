@@ -1,6 +1,8 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title class="ion-text-center">CHECK LIST</ion-title>
+    <ion-back-button defaultHref="/lista"></ion-back-button>
+
   </ion-toolbar>
 </ion-header>
 
@@ -8,38 +10,31 @@
   <ion-list>
     <ion-item>
       <ion-label position="stacked">CHOFER</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.chofer"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">FECHA</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.fecha"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">UNIDAD</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.unidad"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">PLACAS</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.placas"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">KM INICIAL</ion-label>
-      <ion-input type="number"></ion-input>
+      <ion-input type="number" [(ngModel)]="checklist.kmInicial"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">KM FINAL</ion-label>
-      <ion-input type="number"></ion-input>
+      <ion-input type="number" [(ngModel)]="checklist.kmFinal"></ion-input>
     </ion-item>
-
     <ion-item>
       <ion-label position="stacked">COMBUSTIBLE FOTOGRAFIA</ion-label>
-      <input
-        type="file"
-        accept="image/*"
-        capture="camera"
-        style="display: none"
-        id="fileInput"
-      />
+      <input type="file" accept="image/*" capture="camera" style="display: none" id="fileInput" />
       <label for="fileInput" class="file-input-label">
         <ion-icon name="add-circle" style="font-size: 24px"></ion-icon>
       </label>
@@ -53,15 +48,15 @@
   <ion-list>
     <ion-item>
       <ion-label position="stacked">AC MOTOR</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.acMotor"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">AC TRANSM</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.acTransm"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">AC DIRECCION</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.acDireccion"></ion-input>
     </ion-item>
   </ion-list>
 
@@ -72,23 +67,23 @@
   <ion-list>
     <ion-item>
       <ion-label position="stacked">POS 1</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.pos1"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">POS 2</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.pos2"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">POS 3</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.pos3"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">POS 4</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.pos4"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">REFACCION</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.refaccion"></ion-input>
     </ion-item>
   </ion-list>
 
@@ -99,15 +94,15 @@
   <ion-list>
     <ion-item>
       <ion-label position="stacked">ESPEJO LAT IZQ</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.espejoLatIzq"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">ESPEJO LAT DER</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.espejoLatDer"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">RETROVISOR</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.retrovisor"></ion-input>
     </ion-item>
   </ion-list>
 
@@ -118,15 +113,15 @@
   <ion-list>
     <ion-item>
       <ion-label position="stacked">PLACAS</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.placasTransporte"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">TARJETA C</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.tarjetaC"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">LICENCIA</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.licencia"></ion-input>
     </ion-item>
   </ion-list>
 
@@ -137,15 +132,15 @@
   <ion-list>
     <ion-item>
       <ion-label position="stacked">LIMPIABRISAS</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.limpiabrisas"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">GATO</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.gato"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">CLAXON</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.claxon"></ion-input>
     </ion-item>
   </ion-list>
 
@@ -156,28 +151,25 @@
   <ion-list>
     <ion-item>
       <ion-label position="stacked">EXTERIORES</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.exteriores"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">INTERIORES</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.interiores"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">TERMOKING</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="checklist.termoking"></ion-input>
     </ion-item>
   </ion-list>
 
   <ion-item>
     <ion-label position="stacked" style="margin-left: 10px; margin-right: 10px;">COMBUSTIBLE</ion-label>
-    <ion-select>
-      <ion-select-option value="programación">LLENO</ion-select-option>
-      <ion-select-option value="diseño">VACIO</ion-select-option>
-      <!-- Agrega más opciones de categoría aquí -->
+    <ion-select [(ngModel)]="checklist.combustible">
+      <ion-select-option value="lleno">LLENO</ion-select-option>
+      <ion-select-option value="vacio">VACIO</ion-select-option>
     </ion-select>
   </ion-item>
 
-  <ion-button expand="full" color="primary" style="margin: 10px"
-    >ENVIAR CHECK LIST</ion-button
-  >
+  <ion-button expand="full" color="primary" style="margin: 10px" (click)="submitChecklist()">ENVIAR CHECK LIST</ion-button>
 </ion-content>

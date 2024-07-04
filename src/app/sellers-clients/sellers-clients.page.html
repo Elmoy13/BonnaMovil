@@ -25,6 +25,25 @@
   <br>
  
 <br>
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Meta de Ventas</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <!-- Mostrar meta actual -->
+    <p>Meta Actual: {{ meta | currency }}</p>
+    
+    <!-- Input para establecer nueva meta -->
+    <ion-item>
+      <ion-label position="floating">Nueva Meta</ion-label>
+      <ion-input type="number" [(ngModel)]="newMeta"></ion-input>
+    </ion-item>
+    <ion-button expand="block" (click)="updateGoalDay()">Actualizar Meta</ion-button>
+    <ion-button expand="block" (click)="goToBalance()">Ver balance</ion-button>
+    <ion-button expand="block" (click)="goToChecklist()">Ver checklist</ion-button>
+
+  </ion-card-content>
+</ion-card>
   <ion-list>
     <ion-item *ngFor="let client of clients" color="light" class="lista-item">
       <ion-avatar slot="start">
@@ -41,6 +60,7 @@
       </ion-button>
     </ion-item>
   </ion-list>
+  <br> 
   <div class="centrado">
     <select [(ngModel)]="selectedDay" style="width: 100%;">
       <option value="Lunes">Lunes</option>

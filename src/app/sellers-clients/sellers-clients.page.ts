@@ -23,6 +23,10 @@ export class SellersClientsPage implements OnInit {
   filterState: 'asignado' | 'visitado' | 'noVisitado' = 'asignado'; // Estado actual del filtro
   selectedDay: string = "Lunes";
   private loading: HTMLIonLoadingElement;
+  meta: number = 0; // Define your goal here
+  newMeta: number; // Para almacenar el valor del input
+  codAgen: string;
+
   constructor(
     private sellersService: SellersService,
     private route: ActivatedRoute,
@@ -35,11 +39,26 @@ export class SellersClientsPage implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       const codAgen = params['codAgen']; // Obtén el valor de codAgen de los parámetros de la ruta
+      this.codAgen = codAgen;
       this.ruta = params['codAgen'];
       this.loadClients(codAgen);
       this.loadClientsDay(codAgen);
+      this.loadGoalDay(codAgen);
 
     });
+  }
+  updateGoalDay() {
+    if (this.newMeta && this.codAgen) {
+      this.sellersService.updateGoalDay(this.codAgen, this.newMeta).subscribe(
+        (response) => {
+          this.meta = this.newMeta;
+          console.log('Meta actualizada correctamente');
+        },
+        (error) => {
+          console.error('Error updating goalDay', error);
+        }
+      );
+    }
   }
 
   private loadClientsDay(codAgen: string) {
@@ -54,7 +73,16 @@ export class SellersClientsPage implements OnInit {
       }
     );
   }
-  
+  loadGoalDay(codAgen: string) {
+    this.sellersService.getGoalDay(codAgen).subscribe(
+      (data) => {
+        this.meta = data.goalDay;
+      },
+      (error) => {
+        console.error('Error fetching goalDay', error);
+      }
+    );
+  }
   filterClients(day: string, status: string) {
     if (status === 'asignado' || status === 'visitado' || status === 'noVisitado') {
       this.filterState = status as "asignado" | "visitado" | "noVisitado"; // Usa la aserción de tipo
@@ -132,6 +160,12 @@ export class SellersClientsPage implements OnInit {
     });
 
     await alert.present();
+  }
+  goToBalance() {
+    this.router.navigate(['/balance', this.codAgen]);
+  }
+  goToChecklist() {
+    this.router.navigate(['/checklists', this.codAgen]);
   }
 
   async presentAlert(message: string) {

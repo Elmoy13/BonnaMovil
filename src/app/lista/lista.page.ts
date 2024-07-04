@@ -213,4 +213,8 @@ export class ListaPage implements OnInit {
   irCliente(codAgen: string) {
     this.router.navigate(['/route-assignment', codAgen]);
   }
+  goToChecklist() {
+    this.router.navigate(['/check', this.employee_number]);
+  }
+
 }

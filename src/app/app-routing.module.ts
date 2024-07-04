@@ -51,10 +51,17 @@ const routes: Routes = [
     path: 'venta-productos/:NoVenta',
     loadChildren: () => import('./venta-productos/venta-productos.module').then( m => m.VentaProductosPageModule)
   },
+  
   {
-    path: 'checklist',
-    loadChildren: () => import('./checklist/checklist-routing.module').then( m => m.ChecklistRoutingModule)
+    path: 'check/:codAgen',
+    loadChildren: () => import('./check/check.module').then( m => m.CheckPageModule)
   },
+  {
+    path: 'checklists/:codigoAgente',
+    loadChildren: () => import('./checklists/checklists.module').then(m => m.ChecklistsPageModule)
+  }
+
+
 
 
 

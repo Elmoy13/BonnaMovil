@@ -1,0 +1,47 @@
+<!-- checklists.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Checklists</ion-title>
+
+  </ion-toolbar>
+  <ion-back-button></ion-back-button>
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let checklist of checklists">
+      <ion-label>
+        <h2>Unidad: {{ checklist.unidad }}</h2>
+        <p>Fecha: {{ checklist.fecha }}</p>
+        <p>Chofer: {{ checklist.chofer }}</p>
+        <p>Placas: {{ checklist.placas }}</p>
+        <p>Km Inicial: {{ checklist.kmInicial }}</p>
+        <p>Km Final: {{ checklist.kmFinal }}</p>
+        <p>Combustible Foto: {{ checklist.combustibleFoto }}</p>
+        <p>A/C Motor: {{ checklist.acMotor }}</p>
+        <p>A/C Transmisión: {{ checklist.acTransm }}</p>
+        <p>A/C Dirección: {{ checklist.acDireccion }}</p>
+        <p>Posición 1: {{ checklist.pos1 }}</p>
+        <p>Posición 2: {{ checklist.pos2 }}</p>
+        <p>Posición 3: {{ checklist.pos3 }}</p>
+        <p>Posición 4: {{ checklist.pos4 }}</p>
+        <p>Refacción: {{ checklist.refaccion }}</p>
+        <p>Espejo Lateral Izquierdo: {{ checklist.espejoLatIzq }}</p>
+        <p>Espejo Lateral Derecho: {{ checklist.espejoLatDer }}</p>
+        <p>Retrovisor: {{ checklist.retrovisor }}</p>
+        <p>Placas Transporte: {{ checklist.placasTransporte }}</p>
+        <p>Tarjeta Circulación: {{ checklist.tarjetaC }}</p>
+        <p>Licencia: {{ checklist.licencia }}</p>
+        <p>Limpiabrisas: {{ checklist.limpiabrisas }}</p>
+        <p>Gato: {{ checklist.gato }}</p>
+        <p>Claxon: {{ checklist.claxon }}</p>
+        <p>Exteriores: {{ checklist.exteriores }}</p>
+        <p>Interiores: {{ checklist.interiores }}</p>
+        <p>Termoking: {{ checklist.termoking }}</p>
+        <p>Combustible: {{ checklist.combustible }}</p>
+        <p>Código Agente: {{ checklist.codigoAgente }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

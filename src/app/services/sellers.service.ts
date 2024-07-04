@@ -62,4 +62,28 @@ getDetalleVentas(noVenta: string): Observable<any> {
   const url = `${this.apiUrl}venta/${noVenta}`;
   return this.http.get<any>(url);
 }
+getGoalDay(codAgen: string): Observable<any> {
+  const codAgenNumber = Number(codAgen); // Convert to number here
+  const url = `${this.apiUrl}users/${codAgenNumber}/goalDay`;
+  return this.http.get<any>(url);
+}
+updateGoalDay(codAgen: string, goalDay: number): Observable<any> {
+  const codAgenNumber = Number(codAgen); // Convert to number here
+  const url = `${this.apiUrl}users/${codAgenNumber}/goalDay`;
+  return this.http.put<any>(url, { goalDay });
+}
+createChecklist(checklistData: any): Observable<any> {
+  const url = `${this.apiUrl}checklist`;
+  return this.http.post<any>(url, checklistData);
+}
+
+// Método para obtener todos los checklists
+getAllChecklists(): Observable<any[]> {
+  const url = `${this.apiUrl}checklist`;
+  return this.http.get<any[]>(url);
+}
+getChecklistsByCodigoAgente(codigoAgente: number): Observable<any[]> {
+  const url = `${this.apiUrl}checklists/${codigoAgente}`;
+  return this.http.get<any[]>(url);
+}
 }

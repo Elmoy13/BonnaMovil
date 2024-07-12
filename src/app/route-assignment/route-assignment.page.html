@@ -8,7 +8,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterClientsByName()"></ion-searchbar>
+  <ion-searchbar
+  [(ngModel)]="searchTerm"
+  (ionInput)="filterClientsByName()"
+  placeholder="Buscar cliente"
+  class="custom-searchbar">
+</ion-searchbar>
+
   <ion-button expand="block" (click)="irACliente()">Agregar un nuevo cliente</ion-button>
   <ion-list>
     <ion-item *ngFor="let client of filteredClients" color="light" class="lista-item">

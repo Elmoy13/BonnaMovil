@@ -121,6 +121,20 @@ select option:checked {
   background-color: #52070b; // Color de fondo cuando está seleccionado
   color: #52070b; // Color del texto cuando está seleccionado
 }
+.custom-searchbar {
+  --background: white;
+  --border-radius: 15px;
+  --placeholder-color: gray;
+}
+
+.custom-searchbar::part(container) {
+  border-radius: 15px;
+}
+
+.custom-searchbar input::placeholder {
+  color: gray;
+}
+
 
 .unselected-button {
   background-color: #e0141f; // Color de fondo cuando no está seleccionado
